@@ -5,6 +5,8 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
@@ -15,10 +17,14 @@ import java.util.Properties;
 
 @Configuration
 public class ShiroConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
+
     @Bean
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
 
-        System.out.println("ShiroConfiguration.shirFilter()");
+        //System.out.println("ShiroConfiguration.shirFilter()");
+        logger.info("inform:{}","ShiroConfiguration.shirFilter()");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //拦截器.
@@ -44,7 +50,6 @@ public class ShiroConfig {
     /**
      * 凭证匹配器
      * （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了）
-     *
      * @return
      */
     @Bean

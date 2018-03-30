@@ -25,7 +25,8 @@ public class SysPermission implements Serializable {
     private Boolean available = Boolean.FALSE;
 
     @ManyToMany
-    @JoinTable(name="SysRolePermission",joinColumns={@JoinColumn(name="permissionId")},inverseJoinColumns={@JoinColumn(name="roleId")})
+    @JoinTable(name="SysRolePermission",joinColumns={@JoinColumn(name="permissionId")},
+            inverseJoinColumns={@JoinColumn(name="roleId")})
     private List<SysRole> roles;
 
     public Integer getId() {

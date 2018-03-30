@@ -21,3 +21,7 @@ spring:
     thymeleaf:
        cache: false
        mode: LEGACYHTML5
+
+logging:
+    pattern:
+      console: "%d - %msg%n"
